@@ -1,18 +1,20 @@
 <template>
-  <div class="clock">
-    <div class="clock__number-wrapper" :class="{clock__number_wrapper_open: isOpen}">
-      <span class="clock__section clock__section--next">
-        <span class="clock__number js-increment-after">{{num}}</span>
-      </span>
-      <span class="clock__section clock__section--upper">
-        <span class="clock__number js-increment-before">{{oldNum}}</span>
-      </span>
-      <span class="clock__section clock__section--upper-back">
-        <span class="clock__number js-increment-after">{{num}}</span>
-      </span>
-      <span class="clock__section clock__section--lower">
-        <span class="clock__number js-increment-before">{{oldNum}}</span>
-      </span>
+  <div class="board">
+    <div v-for="(item, ind) in String(num)" class="clock" :key="ind">
+      <div class="clock__number-wrapper" :class="{clock__number_wrapper_open: isOpen}" :key="ind">
+        <span class="clock__section clock__section--next">
+          <span class="clock__number js-increment-after">{{item}}</span>
+        </span>
+        <span class="clock__section clock__section--upper">
+          <span class="clock__number js-increment-before">{{String(oldNum)[ind]}}</span>
+        </span>
+        <span class="clock__section clock__section--upper-back">
+          <span class="clock__number js-increment-after">{{item}}</span>
+        </span>
+        <span class="clock__section clock__section--lower">
+          <span class="clock__number js-increment-before">{{String(oldNum)[ind]}}</span>
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -32,7 +34,7 @@ export default {
     num (newNum, old) {
       this.isOpen = true
       setTimeout(() => {
-        this.oldNum = old
+        this.oldNum = this.num
         this.isOpen = false
       }, 500)
     }
@@ -41,19 +43,25 @@ export default {
 </script>
 
 <style scoped>
+.board {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 110px;
+  justify-content: center;
+}
 .clock {
   width: 80px;
   height: 100px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -40px;
-  margin-left: -50px;
+  margin: 10px;
   font-family: Arial;
   line-height: 1;
   perspective: 400px;
 }
-
 .clock__section {
   display: block;
   background-color: #333;
