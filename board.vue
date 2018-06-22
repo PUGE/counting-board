@@ -30,8 +30,13 @@ export default {
       isOpen: false
     }
   },
+  created () {
+    // 初始化完成后就显示一次数值
+    this.oldNum = this.num
+  },
   watch: {
     num (newNum, old) {
+      console.log(newNum, old)
       this.isOpen = true
       setTimeout(() => {
         this.oldNum = this.num

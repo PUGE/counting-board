@@ -2,26 +2,16 @@
 
 安装
 ```
-npm i -save notifications-puge
+npm i -save counting-board
 或
-yarn add notifications-puge
+yarn add counting-board
 ```
 
 ## 参数
 
 | 参数        | 含义         | 类型  | 是否必须  |
 | ----------- |:-------------:| -----:| -----:|
-|value| 显示的数值 | Number | true |
-|animation| 显示的动画| String | false |
-|color| 汽泡文字颜色| String | false |
-|background| 汽泡背景色| String | false |
+|num| 显示的数值 | Number | true |
 
 ## 动画样式
-| 参数        | 动画效果         |
-| ----------- |:-------------:|
-|默认| ![default](http://p5qgrn52w.bkt.clouddn.com/notifications-puge/default.gif) |
-|rubberBand| ![rubberBand](http://p5qgrn52w.bkt.clouddn.com/notifications-puge/rubberBand.gif) |
-|big| ![big](http://p5qgrn52w.bkt.clouddn.com/notifications-puge/big.gif) |
-|swing| ![swing](http://p5qgrn52w.bkt.clouddn.com/notifications-puge/swing.gif) |
-|tada| ![tada](http://p5qgrn52w.bkt.clouddn.com/notifications-puge/tada.gif) |
-|wobble| ![wobble](http://p5qgrn52w.bkt.clouddn.com/notifications-puge/wobble.gif) |
+![default](http://p5qgrn52w.bkt.clouddn.com/counting-board/%E5%BD%95%E5%88%B6_2018_06_22_10_58_30_497.gif)
