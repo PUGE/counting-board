@@ -1,5 +1,5 @@
 {
-  "name": "counting-board",
+  "name": "@puge/scoreboard",
   "version": "1.0.2",
   "description": "一个记分板",
   "author": "PUGE <my@owo.help>",
@@ -7,13 +7,13 @@
   "main": "./index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PUGE/counting-board.git"
+    "url": "https://github.com/PUGE/scoreboard.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PUGE/counting-board/issues"
+    "url": "https://github.com/PUGE/scoreboard/issues"
   },
-  "homepage": "https://github.com/PUGE/counting-board",
+  "homepage": "https://github.com/PUGE/scoreboard",
   "keywords": [
     "counting",
     "vue",

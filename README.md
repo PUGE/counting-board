@@ -2,9 +2,9 @@
 
 安装
 ```
-npm i -save counting-board
+npm i -save @puge/scoreboard
 或
-yarn add counting-board
+yarn add @puge/scoreboard
 ```
 
 ## 参数
@@ -25,7 +25,7 @@ yarn add counting-board
 </template>
 
 <script>
-import counting from 'counting-board'
+import counting from '@puge/scoreboard'
 
 export default {
   name: 'app',
