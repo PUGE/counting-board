@@ -18,9 +18,10 @@ yarn add counting-board
 
 ## 使用示例
 ```
-<template lang="pug">
-  .app
-    counting(:num="2323")
+<template>
+  <div id="app">
+    <counting :num="2323"></counting>
+  </div>
 </template>
 
 <script>
