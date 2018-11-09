@@ -1,4 +1,4 @@
-# notifications-puge
+# scoreboard
 
 安装
 ```
