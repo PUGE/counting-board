@@ -1,18 +1,18 @@
 <template>
   <div class="board">
     <div v-for="(item, ind) in String(num)" class="clock" :key="ind">
-      <div class="clock__number-wrapper" :class="{clock__number_wrapper_open: isOpen}" :key="ind">
-        <span class="clock__section clock__section--next">
+      <div class="clock__number-wrapper" :key="ind">
+        <span class="clock__section clock__section--next" :style="getStyle()">
           <span class="clock__number js-increment-after">{{item}}</span>
         </span>
-        <span class="clock__section clock__section--upper">
-          <span class="clock__number js-increment-before">{{String(oldNum)[ind]}}</span>
+        <span class="clock__section clock__section--upper" :style="getStyle()">
+          <span class="clock__number js-increment-before">{{oldNum[ind]}}</span>
         </span>
-        <span class="clock__section clock__section--upper-back">
+        <span class="clock__section clock__section--upper-back" :style="getStyle()">
           <span class="clock__number js-increment-after">{{item}}</span>
         </span>
-        <span class="clock__section clock__section--lower">
-          <span class="clock__number js-increment-before">{{String(oldNum)[ind]}}</span>
+        <span class="clock__section clock__section--lower" :style="getStyle()">
+          <span class="clock__number js-increment-before">{{oldNum[ind]}}</span>
         </span>
       </div>
     </div>
@@ -22,25 +22,48 @@
 <script>
 export default {
   props: {
-    num: Number
+    num: null,
+    background: {
+      type: String,
+      default: '#333'
+    }
   },
   data () {
     return {
-      oldNum: 0,
-      isOpen: false
+      oldNum: 0
+    }
+  },
+  methods: {
+    getStyle () {
+      return {
+        'background-color': this.background
+      }
     }
   },
   created () {
     // 初始化完成后就显示一次数值
-    this.oldNum = this.num
+    this.oldNum = String(this.num)
   },
   watch: {
     num (newNum, old) {
-      console.log(newNum, old)
-      this.isOpen = true
+      const oldNumArr = String(old).split("")
+      const newNumArr = String(newNum).split("")
+      for (let key = 0; key < newNumArr.length; key++) {
+        if (newNumArr[key] !== oldNumArr[key]) {
+          // 数字如果增加位数 这时候Dom节点还没刷新
+          if (this.$el.childNodes[key]) {
+            this.$el.childNodes[key].childNodes[0].classList.add("clock__number_wrapper_open")
+          }
+        }
+      }
       setTimeout(() => {
-        this.oldNum = this.num
-        this.isOpen = false
+        this.oldNum = String(newNum)
+        // console.log(this.isOpen)
+        for (let key = 0; key < newNumArr.length; key++) {
+          if (this.$el.childNodes[key]) {
+            this.$el.childNodes[key].childNodes[0].classList.remove("clock__number_wrapper_open")
+          }
+        }
       }, 500)
     }
   }
